@@ -9,7 +9,7 @@ const BUTTON_WRAPPER_STYLES = {
 const OTHER_CONTENT_STYLES = {
   position: "relative",
   zIndex: 2,
-  backgroundColor: "seagreen",
+  backgroundColor: "#efe9e5",
   padding: "10px",
 }
 
@@ -19,10 +19,10 @@ function App() {
   return (
     <div className="app bg-slate-400 p-2">
       <div style={BUTTON_WRAPPER_STYLES} className="mb-2">
-        <button>Open Modal</button>
+        <button onClick={() => setIsOpenModal(true)}>Open Modal</button>
       </div>
 
-      <Modal isOpenModal={isOpenModal}/>
+      {isOpenModal && <Modal isOpenModal={isOpenModal} onClose={()=> setIsOpenModal(false)}/>}
 
       <div className="other_content" style={OTHER_CONTENT_STYLES}>
         <p>
