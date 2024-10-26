@@ -1,14 +1,14 @@
-import {useState} from "react"
-import {Modal} from "./component/Modal"
+import { useState } from "react"
+import { Modal } from "./component/Modal"
 
 const BUTTON_WRAPPER_STYLES = {
-  position: "relative",
-  zIndex: 1,
+  // position: "relative",
+  // zIndex: 1,
 }
 
 const OTHER_CONTENT_STYLES = {
-  position: "relative",
-  zIndex: 2,
+  // position: "relative",
+  // zIndex: 2,
   backgroundColor: "#efe9e5",
   padding: "10px",
 }
@@ -17,14 +17,21 @@ function App() {
   const [isOpenModal, setIsOpenModal] = useState(false)
 
   return (
-    <div className="app bg-slate-400 p-2">
-      <div style={BUTTON_WRAPPER_STYLES} className="mb-2">
-        <button onClick={() => setIsOpenModal(true)}>Open Modal</button>
-      </div>
+    <>
+      <div style={BUTTON_WRAPPER_STYLES} className="app bg-slate-400 p-2">
+        <div className="mb-2">
+          <button onClick={() => setIsOpenModal(true)}>Open Modal</button>
+        </div>
 
-      {isOpenModal && <Modal isOpenModal={isOpenModal} onClose={()=> setIsOpenModal(false)}/>}
+        <Modal
+          isOpenModal={isOpenModal}
+          setIsOpenModal={setIsOpenModal}
+          onClose={() => setIsOpenModal(false)}
+        />
+      </div>
 
       <div className="other_content" style={OTHER_CONTENT_STYLES}>
+        <h1>other content</h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed
           vehicula lacus. Curabitur tempor magna id lacus facilisis, eget
@@ -121,7 +128,7 @@ function App() {
           ligula.
         </p>
       </div>
-    </div>
+    </>
   )
 }
 

@@ -40,9 +40,8 @@ a:hover {
 button {
   background-color: #646cff;
   padding: 5px 15px;
-
 }
 body {
-  min-height: 100vh;
+  /* min-height: 100vh; */
   margin: 1rem;
 }
