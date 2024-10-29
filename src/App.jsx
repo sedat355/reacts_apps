@@ -1,11 +1,20 @@
+import {useState} from "react"
 import {Popup} from "./components/Popup"
 
 function App() {
+  const [isOpenModal,setIsOpenModal] = useState(false)
+
+  console.log(isOpenModal)
+
   return (
     <div className="app space-x-2">
-      <button className="btn btn-danger">Delete</button>
+      <button
+        onClick={	() => setIsOpenModal(true)}       
+        className="btn btn-danger">
+          Delete
+      </button>
 
-      <Popup/>
+      {isOpenModal && <Popup isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal}/>}
 
       <div className="content">
         <h2 className="font-bold text-2xl my-2">Ultimate React Router v6 Guide</h2>
