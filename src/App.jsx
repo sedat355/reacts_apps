@@ -1,7 +1,9 @@
 function App() {
   return (
-    <div className="app">
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+    <div className="app space-x-2">
+     <button className="btn btn-normal">Delete</button>
+     <button className="btn btn-danger">Delete</button>
+     <button className="btn btn-light">Delete</button>
     </div>
   )
 }
