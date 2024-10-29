@@ -1,23 +1,41 @@
-import {useState} from "react"
-import {Popup} from "./components/Popup"
+import { useEffect, useState } from "react"
+import { Popup } from "./components/Popup"
+import { useRef } from "react"
 
 function App() {
-  const [isOpenModal,setIsOpenModal] = useState(false)
+  const [isOpenModal, setIsOpenModal] = useState(false)
+  const dialogRef = useRef()
 
-  console.log(isOpenModal)
+  const openPopup = () => {
+    dialogRef.current.showModal()
+  }
+
+  const closePopup = () => {
+    dialogRef.current.close()
+  }
+  
+  useEffect(() => {
+    console.log(dialogRef)
+  }, [])
 
   return (
     <div className="app space-x-2">
-      <button
-        onClick={	() => setIsOpenModal(true)}       
-        className="btn btn-danger">
-          Delete
+      <button onClick={openPopup} className="btn btn-danger">
+        Delete
       </button>
 
-      {isOpenModal && <Popup isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal}/>}
+      <dialog ref={dialogRef}>
+        <Popup
+          closePopup={closePopup}
+          isOpenModal={isOpenModal}
+          setIsOpenModal={setIsOpenModal}
+        />
+      </dialog>
 
       <div className="content">
-        <h2 className="font-bold text-2xl my-2">Ultimate React Router v6 Guide</h2>
+        <h2 className="font-bold text-2xl my-2">
+          Ultimate React Router v6 Guide
+        </h2>
         <p className="leading-normal">
           React Router is the most popular routing library in React, but it can
           be a bit complicated to wrap your head around some of the more complex
